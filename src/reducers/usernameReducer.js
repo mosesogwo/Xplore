@@ -1,9 +1,9 @@
-const usernameReducer = (state = null, action) => {
+const usernameReducer = (state = '', action) => {
   switch (action.type) {
     case 'LOGIN':
       return action.username;
     case 'LOGOUT':
-      return null;
+      return '';
     default:
       return state;
   }

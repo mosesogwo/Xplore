@@ -1,8 +1,12 @@
-const LOGIN = username => ({
-  type: 'LOGIN',
-  username: username
-})
+const LOGIN = username => {
+return  {
+    type: 'LOGIN',
+    username,
+  }
+}
 
 const LOGOUT = () => ({
   type: 'LOGOUT',
 })
+
+export { LOGIN, LOGOUT };
