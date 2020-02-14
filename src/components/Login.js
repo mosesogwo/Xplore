@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { LOGIN } from '../actions/index'
+import { NavLink } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class Login extends Component {
     const { login } = this.props;
     if (username !== ''){
       login(username);
-      console.log(username)
+      this.props.history.push('/')
     }
   }
 
@@ -34,6 +35,7 @@ class Login extends Component {
     return(
       <div>
         <div>
+          <NavLink to="/">Go back home</NavLink>
           <h1>Login</h1>
           <p>Enter your username to login. No need to Sign Up</p>
           <form>
