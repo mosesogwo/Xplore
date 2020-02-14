@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, NavLink, Switch, Route } from 'react-router-dom'
-import Login from './Login'
+import { NavLink } from 'react-router-dom';
 
 class Home extends Component {
 
