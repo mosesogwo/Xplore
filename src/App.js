@@ -14,7 +14,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/packages" component={Packages} />
-          {/* <Route path="/wishlist" component={WishList} /> */}
+          <Route path="/wishlist" component={WishList} />
         </Switch>
       </div>
     </Router>

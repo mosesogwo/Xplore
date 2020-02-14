@@ -19,4 +19,4 @@ const SET_WISHLIST = wishlist => ({
   wishlist,
 })
 
-export { LOGIN, LOGOUT, SET_PACKAGES };
+export { LOGIN, LOGOUT, SET_PACKAGES, SET_WISHLIST };

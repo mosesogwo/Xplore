@@ -1,30 +1,28 @@
 import React, { Component } from 'react';
-import { SET_PACKAGES } from '../actions';
+import { SET_WISHLIST } from '../actions';
 import { connect } from 'react-redux';
-import PackageBrief from './PackageBrief';
 
-
-class Packages extends Component {
+class Wishlist extends Component {
 
   UNSAFE_componentWillMount = () => {
-    this.getPackages()
+    this.getWishlist()
   }
 
-  getPackages = () => {
-    const { setPackages } = this.props;
+  getWishlist = () => {
+    const { setWishlist } = this.props;
     fetch("http://localhost:3001/api/v1/packages")
       .then(res => res.json())
       .then(res => {
-        setPackages(res.data);
+        setWishlist(res.data);
     })
   }
 
   render = () => {
-    const packages = this.props.packages;
-    console.log(packages)
+    const wishlist = this.props.wishlist;
+    console.log(wishlist)
     return(
       <div>
-        {packages.map(packageInfo => {
+        {wishlist.map(packageInfo => {
           return(
             <div>
               <p>{packageInfo.destination}</p>
@@ -40,11 +38,11 @@ class Packages extends Component {
 }
 
 const mapStateToProps = state => ({
-  packages: state.packages
+  wishlist: state.wishlist
 })
 
 const mapDispatchToProps = dispatch => ({
-  setPackages: packages => dispatch(SET_PACKAGES(packages))
+  setWishlist: packages => dispatch(SET_WISHLIST(packages))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Packages);
+export default connect(mapStateToProps, mapDispatchToProps)(Wishlist);
