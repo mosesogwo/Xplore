@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './components/Home';
 import Login from './components/Login';
 import Packages from './components/Packages';
+import Wishlist from './components/Wishlist'
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/packages" component={Packages} />
-          <Route path="/wishlist" component={WishList} />
+          <Route path="/wishlist" component={Wishlist} />
         </Switch>
       </div>
     </Router>
