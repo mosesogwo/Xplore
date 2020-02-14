@@ -14,4 +14,9 @@ const SET_PACKAGES = packages => ({
   packages,
 })
 
+const SET_WISHLIST = wishlist => ({
+  type: 'SET_WISHLIST',
+  wishlist,
+})
+
 export { LOGIN, LOGOUT, SET_PACKAGES };

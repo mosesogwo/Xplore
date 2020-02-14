@@ -28,6 +28,8 @@ class Packages extends Component {
           return(
             <div>
               <p>{packageInfo.destination}</p>
+              {/* <p>{packageInfo.images}</p> */}
+              <p>{packageInfo.price}</p>
             </div>
           )
         })}
