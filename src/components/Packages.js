@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { SET_PACKAGES } from '../actions';
 import { connect } from 'react-redux';
+import PackageBrief from './PackageBrief';
 
 
 class Packages extends Component {
 
   UNSAFE_componentWillMount = () => {
-    console.log("Will Mount")
     this.getPackages()
   }
 
@@ -16,14 +16,22 @@ class Packages extends Component {
       .then(res => res.json())
       .then(res => {
         setPackages(res.data);
-      })
+    })
   }
 
   render = () => {
-    const { packages } = this.props;
+    const packages = this.props.packages;
+    console.log(packages)
     return(
       <div>
-        {console.log(packages.length)}
+        {packages.map(packageInfo => {
+          return(
+            <div>
+              <p>{packageInfo.destination}</p>
+            </div>
+          )
+        })}
+        <p>What is wrong here??</p>
       </div>
     )
   }
