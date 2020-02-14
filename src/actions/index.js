@@ -9,4 +9,9 @@ const LOGOUT = () => ({
   type: 'LOGOUT',
 })
 
-export { LOGIN, LOGOUT };
+const SET_PACKAGES = packages => ({
+  type: 'SET_PACKAGES',
+  packages,
+})
+
+export { LOGIN, LOGOUT, SET_PACKAGES };
