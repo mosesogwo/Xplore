@@ -6,3 +6,5 @@ const wishlistReducer = (state = [], action) => {
       return state; 
   }
 }
+
+export default wishlistReducer;

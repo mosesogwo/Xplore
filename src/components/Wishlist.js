@@ -9,17 +9,18 @@ class Wishlist extends Component {
   }
 
   getWishlist = () => {
-    const { setWishlist } = this.props;
-    fetch("http://localhost:3001/api/v1/packages")
+    const { setWishlist, username } = this.props;
+    if (username !== ''){
+      fetch(`http://localhost:3001/api/v1/wishes?username=${username}`)
       .then(res => res.json())
       .then(res => {
         setWishlist(res.data);
     })
+    }
   }
 
   render = () => {
     const wishlist = this.props.wishlist;
-    console.log(wishlist)
     return(
       <div>
         {wishlist.map(packageInfo => {
@@ -38,11 +39,12 @@ class Wishlist extends Component {
 }
 
 const mapStateToProps = state => ({
-  wishlist: state.wishlist
+  wishlist: state.wishlist,
+  username: state.username,
 })
 
 const mapDispatchToProps = dispatch => ({
-  setWishlist: packages => dispatch(SET_WISHLIST(packages))
+  setWishlist: wishlist => dispatch(SET_WISHLIST(wishlist))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wishlist);

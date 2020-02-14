@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { SET_PACKAGES } from '../actions';
 import { connect } from 'react-redux';
-import PackageBrief from './PackageBrief';
 
 
 class Packages extends Component {
