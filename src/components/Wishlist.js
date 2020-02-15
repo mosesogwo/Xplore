@@ -4,7 +4,12 @@ import { SET_WISHLIST } from '../actions';
 
 class Wishlist extends Component {
   UNSAFE_componentWillMount = () => {
-    this.getWishlist();
+    const { username } = this.props;
+    if (username === ''){
+      this.props.history.push('/login');
+    } else {
+      this.getWishlist();
+    }
   }
 
   getWishlist = () => {
@@ -23,13 +28,16 @@ class Wishlist extends Component {
     return (
       <div>
         {wishlist.map(packageInfo => (
-          <div>
-            <p>{packageInfo.destination}</p>
-            {/* <p>{packageInfo.images}</p> */}
-            <p>{packageInfo.price}</p>
-          </div>
+          <div className="package">
+            <div className="package-img">
+              <img src={packageInfo.image} width={200} height={200} />
+            </div>
+            <div className="package-title">
+              <p>{packageInfo.destination}</p>
+              <p>{packageInfo.price}</p>
+            </div>
+        </div>
         ))}
-        <p>What is wrong here??</p>
       </div>
     );
   }

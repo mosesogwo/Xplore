@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SET_PACKAGES } from '../actions';
+import PackageDetails from './PackageDetails';
 
 
 class Packages extends Component {
@@ -17,16 +18,36 @@ class Packages extends Component {
       });
   }
 
+  addToWishList = (id) => {
+    const { username } = this.props;
+    fetch("http://localhost:3001/api/v1/wishes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username,
+        id
+      })
+    })
+    .then(this.getPackages())
+  }
+
   render = () => {
     const { packages } = this.props;
     console.log(packages);
     return (
       <div>
         {packages.map(packageInfo => (
-          <div>
-            <p>{packageInfo.destination}</p>
-            {/* <p>{packageInfo.images}</p> */}
-            <p>{packageInfo.price}</p>
+          <div className="package">
+            <div className="package-img">
+              <img src={packageInfo.image} width={200} height={200} />
+            </div>
+            <div className="package-title">
+              <p>{packageInfo.destination}</p>
+              <p>{packageInfo.price}</p>
+              <button onClick={() => this.addToWishList(packageInfo.id)}>Add to Wishlist</button>
+            </div>
           </div>
         ))}
         <p>What is wrong here??</p>
@@ -37,6 +58,7 @@ class Packages extends Component {
 
 const mapStateToProps = state => ({
   packages: state.packages,
+  username: state.username
 });
 
 const mapDispatchToProps = dispatch => ({
