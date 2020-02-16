@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Home = props => {
+  const { username } = props;
 
-  const { username } = props
-
-  return(
+  return (
     <div>
       <header>
         <div className="logo-div">
@@ -22,11 +22,15 @@ const Home = props => {
         </nav>
       </header>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => ({
   username: state.username,
-})
+});
+
+Home.propTypes = {
+  username: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps)(Home);

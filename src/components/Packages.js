@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SET_PACKAGES } from '../actions/index';
-import { SET_WISHLIST } from '../actions/index'
+import { SET_PACKAGES, SET_WISHLIST } from '../actions/index';
 
 
 class Packages extends Component {
   UNSAFE_componentWillMount = () => {
     this.getPackages();
   }
-  
+
   getWishlist = () => {
     const { setWishlist, username } = this.props;
     if (username !== '') {
@@ -30,28 +29,28 @@ class Packages extends Component {
       });
   }
 
-  addToWishList = (id) => {
+  addToWishList = id => {
     const { username } = this.props;
-    fetch("http://localhost:3001/api/v1/wishes", {
-      method: "POST",
+    fetch('http://localhost:3001/api/v1/wishes', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         username,
-        id
-      })
+        id,
+      }),
     })
-    .then(this.getPackages())
+      .then(this.getPackages());
   }
 
-  addToWishListBtn = (id) => {
+  addToWishListBtn = id => {
     const { wishlist } = this.props;
     const wishlistIds = wishlist.map(wish => wish.id);
-    if(wishlistIds.includes(id)){
-      return 
+    if (wishlistIds.includes(id)) {
+
     } else {
-      return(<button onClick={() => this.addToWishList(id)}>Add to wishlist</button>)
+      return (<button onClick={() => this.addToWishList(id)}>Add to wishlist</button>);
       this.history.push('/packages');
     }
   }
@@ -83,7 +82,7 @@ class Packages extends Component {
 const mapStateToProps = state => ({
   packages: state.packages,
   username: state.username,
-  wishlist: state.wishlist
+  wishlist: state.wishlist,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { LOGIN } from '../actions/index';
-import { SET_WISHLIST } from '../actions/index';
+
 
 class Login extends Component {
   constructor(props) {
@@ -13,9 +13,9 @@ class Login extends Component {
   }
 
   UNSAFE_componentWillMount = () => {
-    const { username } = this.props
+    const { username } = this.props;
     const { login } = this.props;
-    if (username !== ''){
+    if (username !== '') {
       login('');
       this.getWishlist();
       this.props.history.push('/');
@@ -23,7 +23,7 @@ class Login extends Component {
   }
 
   getWishlist = () => {
-    const { setWishlist, username } = this.props;
+    const { username } = this.props;
     if (username !== '') {
       fetch(`http://localhost:3001/api/v1/wishes?username=${username}`)
         .then(res => res.json())
@@ -70,7 +70,7 @@ class Login extends Component {
 
 const mapStateToProps = state => ({
   username: state.username,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   login: username => dispatch(LOGIN(username)),

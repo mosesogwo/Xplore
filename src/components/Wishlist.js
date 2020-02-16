@@ -5,7 +5,7 @@ import { SET_WISHLIST } from '../actions';
 class Wishlist extends Component {
   UNSAFE_componentWillMount = () => {
     const { username } = this.props;
-    if (username === ''){
+    if (username === '') {
       this.props.history.push('/login');
     } else {
       this.getWishlist();
@@ -36,7 +36,7 @@ class Wishlist extends Component {
               <p>{packageInfo.destination}</p>
               <p>{packageInfo.price}</p>
             </div>
-        </div>
+          </div>
         ))}
       </div>
     );

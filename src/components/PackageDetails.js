@@ -15,7 +15,7 @@ const PackageDetails = props => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default PackageDetails;
