@@ -1,10 +1,10 @@
 const packagesReducer = (state = [], action) => {
-  switch(action.type){
+  switch (action.type) {
     case 'SET_PACKAGES':
       return action.packages;
     default:
-      return state; 
+      return state;
   }
-}
+};
 
 export default packagesReducer;

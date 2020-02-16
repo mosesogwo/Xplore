@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { LOGIN } from '../actions/index';
 
 
@@ -13,23 +14,11 @@ class Login extends Component {
   }
 
   UNSAFE_componentWillMount = () => {
-    const { username } = this.props;
-    const { login } = this.props;
+    const { username, login, history } = this.props;
     if (username !== '') {
       login('');
       this.getWishlist();
-      this.props.history.push('/');
-    }
-  }
-
-  getWishlist = () => {
-    const { username } = this.props;
-    if (username !== '') {
-      fetch(`http://localhost:3001/api/v1/wishes?username=${username}`)
-        .then(res => res.json())
-        .then(res => {
-          setWishlist(res.data);
-        });
+      history.push('/');
     }
   }
 
@@ -46,10 +35,10 @@ class Login extends Component {
   handleLogin = event => {
     event.preventDefault();
     const { username } = this.state;
-    const { login } = this.props;
+    const { login, history } = this.props;
     if (username !== '') {
       login(username);
-      this.props.history.push('/');
+      history.push('/');
     }
   }
 
@@ -75,5 +64,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   login: username => dispatch(LOGIN(username)),
 });
+
+Login.propTypes = {
+  username: PropTypes.string.isRequired,
+  login: PropTypes.func.isRequired,
+  history: PropTypes.object,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

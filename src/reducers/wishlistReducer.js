@@ -1,10 +1,10 @@
 const wishlistReducer = (state = [], action) => {
-  switch(action.type){
+  switch (action.type) {
     case 'SET_WISHLIST':
       return action.wishlist;
     default:
-      return state; 
+      return state;
   }
-}
+};
 
 export default wishlistReducer;

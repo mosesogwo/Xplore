@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { SET_PACKAGES, SET_WISHLIST } from '../actions/index';
 
 
@@ -25,6 +26,7 @@ class Packages extends Component {
     fetch('http://localhost:3001/api/v1/packages')
       .then(res => res.json())
       .then(res => {
+        console.log(res)
         setPackages(res.data);
       });
   }
@@ -45,19 +47,17 @@ class Packages extends Component {
   }
 
   addToWishListBtn = id => {
-    const { wishlist } = this.props;
+    const { wishlist, username } = this.props;
     const wishlistIds = wishlist.map(wish => wish.id);
-    if (wishlistIds.includes(id)) {
+    if (wishlistIds.includes(id) || username == '') {
 
     } else {
       return (<button onClick={() => this.addToWishList(id)}>Add to wishlist</button>);
-      this.history.push('/packages');
     }
   }
 
   render = () => {
     const { packages } = this.props;
-    console.log(packages);
     return (
       <div>
         {packages.map(packageInfo => (
@@ -89,5 +89,13 @@ const mapDispatchToProps = dispatch => ({
   setWishlist: wishlist => dispatch(SET_WISHLIST(wishlist)),
   setPackages: packages => dispatch(SET_PACKAGES(packages)),
 });
+
+Packages.propTypes = {
+  setWishlist: PropTypes.func.isRequired,
+  username: PropTypes.string,
+  setPackages: PropTypes.func.isRequired,
+  wishlist: PropTypes.array.isRequired,
+  packages: PropTypes.array.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Packages);

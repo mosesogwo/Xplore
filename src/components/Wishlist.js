@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { SET_WISHLIST } from '../actions';
 
 class Wishlist extends Component {
   UNSAFE_componentWillMount = () => {
-    const { username } = this.props;
+    const { username, history } = this.props;
     if (username === '') {
-      this.props.history.push('/login');
+      history.push('/login');
     } else {
       this.getWishlist();
     }
@@ -51,5 +52,14 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setWishlist: wishlist => dispatch(SET_WISHLIST(wishlist)),
 });
+
+Wishlist.propTypes = {
+  username: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
+  setWishlist: PropTypes.func.isRequired,
+  wishlist: PropTypes.array.isRequired,
+
+
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wishlist);
