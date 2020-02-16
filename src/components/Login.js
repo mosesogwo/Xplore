@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { LOGIN } from '../actions/index';
+import { SET_WISHLIST } from '../actions/index';
 
 class Login extends Component {
   constructor(props) {
@@ -15,8 +16,20 @@ class Login extends Component {
     const { username } = this.props
     const { login } = this.props;
     if (username !== ''){
-      login('')
+      login('');
+      this.getWishlist();
       this.props.history.push('/');
+    }
+  }
+
+  getWishlist = () => {
+    const { setWishlist, username } = this.props;
+    if (username !== '') {
+      fetch(`http://localhost:3001/api/v1/wishes?username=${username}`)
+        .then(res => res.json())
+        .then(res => {
+          setWishlist(res.data);
+        });
     }
   }
 

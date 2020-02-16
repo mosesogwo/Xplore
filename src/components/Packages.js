@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SET_PACKAGES } from '../actions';
-import PackageDetails from './PackageDetails';
+import { SET_PACKAGES } from '../actions/index';
+import { SET_WISHLIST } from '../actions/index'
 
 
 class Packages extends Component {
   UNSAFE_componentWillMount = () => {
     this.getPackages();
   }
+  
+  getWishlist = () => {
+    const { setWishlist, username } = this.props;
+    if (username !== '') {
+      fetch(`http://localhost:3001/api/v1/wishes?username=${username}`)
+        .then(res => res.json())
+        .then(res => {
+          setWishlist(res.data);
+        });
+    }
+  }
 
   getPackages = () => {
     const { setPackages } = this.props;
+    this.getWishlist();
     fetch('http://localhost:3001/api/v1/packages')
       .then(res => res.json())
       .then(res => {
@@ -33,6 +45,17 @@ class Packages extends Component {
     .then(this.getPackages())
   }
 
+  addToWishListBtn = (id) => {
+    const { wishlist } = this.props;
+    const wishlistIds = wishlist.map(wish => wish.id);
+    if(wishlistIds.includes(id)){
+      return 
+    } else {
+      return(<button onClick={() => this.addToWishList(id)}>Add to wishlist</button>)
+      this.history.push('/packages');
+    }
+  }
+
   render = () => {
     const { packages } = this.props;
     console.log(packages);
@@ -46,11 +69,12 @@ class Packages extends Component {
             <div className="package-title">
               <p>{packageInfo.destination}</p>
               <p>{packageInfo.price}</p>
-              <button onClick={() => this.addToWishList(packageInfo.id)}>Add to Wishlist</button>
+              <p>
+                { this.addToWishListBtn(packageInfo.id) }
+              </p>
             </div>
           </div>
         ))}
-        <p>What is wrong here??</p>
       </div>
     );
   }
@@ -58,10 +82,12 @@ class Packages extends Component {
 
 const mapStateToProps = state => ({
   packages: state.packages,
-  username: state.username
+  username: state.username,
+  wishlist: state.wishlist
 });
 
 const mapDispatchToProps = dispatch => ({
+  setWishlist: wishlist => dispatch(SET_WISHLIST(wishlist)),
   setPackages: packages => dispatch(SET_PACKAGES(packages)),
 });
 
