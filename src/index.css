@@ -13,6 +13,8 @@ code {
     monospace;
 }
 
+/* HOME PAGE */
+
 .home {
   background: url('./images/plane_bg.jpg');
   background-size: cover;
@@ -22,7 +24,7 @@ code {
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  padding: 3rem;
+  padding: 2rem 3rem;
   box-sizing: border-box;
 }
 
@@ -31,17 +33,13 @@ code {
 }
 
 .header-div nav {
-  width: 30%;
   display: flex;
   justify-content: center;
 }
 
 .header-div ul {
-  margin: 0;
-  padding: 0;
   list-style-type: none;
   display: flex;
-  justify-content: stretch;
 }
 
 .header-div li {
@@ -50,7 +48,6 @@ code {
 
 .header-div {
   width: 100%;
-  /* margin: 3rem; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -63,7 +60,7 @@ code {
 }
 
 main {
-  margin-bottom: 7rem;
+  margin-bottom: 8rem;
 }
 
 main .headline {
@@ -76,8 +73,150 @@ main .byline {
 
 main button {
   background-color: orangered;
+  padding: 0.3rem 2rem;
+  border-radius: 25px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 900;
+  border-color: orangered;
+}
+
+/* LOGIN PAGE */
+
+.login-div {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5rem;
+  box-sizing: border-box;
+}
+
+.login-div::after {
+  content: "";
+  background: url(./images/plane_bg.jpg);
+  background-size: cover;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+.login-form {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.login-form input {
+  border-radius: 25px;
   padding: 0.5rem 2rem;
+  margin-top: 2rem;
+  border-color: orangered;
+}
+
+.login-form button {
+  background-color: orangered;
+  padding: 0.3rem 0rem;
   border-radius: 25px;
   color: white;
   font-weight: 900;
+  font-size: 1rem;
+  width: 10rem;
+  align-self: center;
+  margin-top: 2rem;
+  border-color: orangered;
+}
+
+.login-div a {
+  color: black;
+  text-decoration: none;
+}
+
+/* PACKAGES PAGE */
+.packages {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  padding: 2rem 3rem;
+  color: white;
+  /* background-image: linear-gradient(to right top, #fbdac5, #eec8b0, #e1b69c, #d3a588, #c69474, #c6906d, #c58b67, #c58760, #d28f64, #de9668, #eb9e6d, #f8a671); */
+  background: rgb(243, 236, 236);
+  color: black;
+}
+
+.packages h1 {
+  margin: 0;
+}
+
+.packages .header-div li a {
+  color: white;
+  color: black;
+  text-decoration: none;
+}
+
+.packages .intro {
+  align-self: center;
+  width: 60%;
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.all-packages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.package {
+  width: 25rem;
+  margin-bottom: 2rem;
+}
+
+.package-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.package-brief {
+  background: white;
+  color: black;
+  padding: 1rem;
+  display: flex;
+  font-weight: bolder;
+}
+
+.package-brief div:first-of-type {
+  margin-right: 2rem;
+}
+
+.package-brief p {
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.package-details button {
+  background-color: orangered;
+  padding: 0.2rem 1rem;
+  border-radius: 25px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 900;
+  border-color: orangered;
+}
+
+.hidden {
+  display: none;
 }

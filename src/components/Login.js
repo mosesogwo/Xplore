@@ -17,7 +17,6 @@ class Login extends Component {
     const { username, login, history } = this.props;
     if (username !== '') {
       login('');
-      this.getWishlist();
       history.push('/');
     }
   }
@@ -44,14 +43,18 @@ class Login extends Component {
 
   render = () => (
     <div>
-      <div>
-        <NavLink to="/">Go back home</NavLink>
-        <h1>Login</h1>
-        <p>Enter your username to login. No need to Sign Up</p>
-        <form>
-          <input type="text" placeholder="username" id="username" onChange={this.handleChange} />
-          <button type="submit" onClick={this.handleLogin}>Login</button>
-        </form>
+      <div className="login-div">
+        <div class="login-form">
+          <h1>Login</h1>
+          <p>Enter your username to login. No need to Sign Up</p>
+          <form>
+            <input type="text" placeholder="Username" id="username" onChange={this.handleChange} />
+            <button type="submit" onClick={this.handleLogin}>Login</button>
+          </form>
+        </div>
+        <div class="nav-link">
+        	<NavLink to="/">Go back home</NavLink>
+        </div>
       </div>
     </div>
   )

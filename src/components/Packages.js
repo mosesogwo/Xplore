@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SET_PACKAGES, SET_WISHLIST } from '../actions/index';
 
@@ -52,28 +53,53 @@ class Packages extends Component {
     if (wishlistIds.includes(id) || username == '') {
 
     } else {
-      return (<button onClick={() => this.addToWishList(id)}>Add to wishlist</button>);
+      return (<button onClick={() => this.addToWishList(id)}>Add to Wishlist</button>);
     }
   }
 
   render = () => {
-    const { packages } = this.props;
+    const { packages, username } = this.props;
     return (
-      <div>
-        {packages.map(packageInfo => (
-          <div className="package">
-            <div className="package-img">
-              <img src={packageInfo.image} width={200} height={200} />
+      <div className="packages">
+          <div className="header-div">
+            <div className="logo-div">
+              <h1>Xplore!</h1>
             </div>
-            <div className="package-title">
-              <p>{packageInfo.destination}</p>
-              <p>{packageInfo.price}</p>
-              <p>
-                { this.addToWishListBtn(packageInfo.id) }
-              </p>
-            </div>
+            <nav>
+              <ul>
+                <li><NavLink to="/">HOME</NavLink></li>
+                <li><NavLink to="/login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
+                <li><NavLink to="/packages">PACKAGES</NavLink></li>
+                <li><NavLink to="/wishlist">{ username !== '' ? 'MY WISHLIST' : '' }</NavLink></li>
+              </ul>
+            </nav>
           </div>
-        ))}
+  
+          <div className="intro">
+            <h2> Why book a vacation package instead of separate flights and hotels? </h2>
+            <p>Vacation packages include flight, hotel accomodation and extras like airport transfers, tours, meals, networking meetings and other activities. You can find rates that save you so much money and booking a package saves you the stress of arranging for these items separately.  </p>
+          </div>
+
+        <div className="all-packages">
+          {packages.map(packageInfo => (
+              <div className="package">
+  
+                <div className="package-img">
+                  <img src={packageInfo.image} className="package-img" />
+                </div>
+  
+                <div className="package-brief">
+                  <div>{packageInfo.destination}</div>
+                  <div>N{packageInfo.price}</div>
+                </div>
+  
+                <div className="package-details hidden">
+                    <p>{packageInfo.details}</p>
+                    { this.addToWishListBtn(packageInfo.id) }
+                </div>
+              </div>
+          ))}
+        </div>
       </div>
     );
   }
