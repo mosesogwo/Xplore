@@ -15,14 +15,27 @@ const Home = props => {
           </div>
           <nav>
             <ul>
-              <li><NavLink to="/">Home</NavLink></li>
-              <li><NavLink to="/login">{username !== '' ? 'Logout' : 'Login'}</NavLink></li>
-              <li><NavLink to="/packages">Packages</NavLink></li>
-              <li><NavLink to="/wishlist">{ username !== '' ? 'My Wishlist' : '' }</NavLink></li>
+              <li><NavLink to="/">HOME</NavLink></li>
+              <li><NavLink to="/login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
+              <li><NavLink to="/packages">PACKAGES</NavLink></li>
+              <li><NavLink to="/wishlist">{ username !== '' ? 'MY WISHLIST' : '' }</NavLink></li>
             </ul>
           </nav>
         </div>
       </header>
+      <main>
+        <div className="headline">
+          <h1>Find your vacation package</h1>
+        </div>
+        <div className="byline">
+          <p>
+            Going on a vacation shouldn't be stressful and costly. Find the most exciting and affordable vacation & tour packages.
+          </p>
+        </div>
+        <div className="actionbtn">
+          <button type="button">FIND NOW</button>
+        </div>
+      </main>
     </div>
   );
 };
