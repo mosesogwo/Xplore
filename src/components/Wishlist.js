@@ -26,8 +26,8 @@ class Wishlist extends Component {
   }
 
   expandDetails = (event) => {
-    const detailsDiv = event.target.parentNode.parentNode.querySelector('.package-details');
-    detailsDiv.classList.toggle('hidden')
+      const detailsDiv = event.target.parentNode.parentNode.querySelector('.package-details');
+      detailsDiv.classList.toggle('hidden')
   }
 
   render = () => {

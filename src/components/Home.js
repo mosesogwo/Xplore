@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const Home = props => {
-  const { username } = props;
+  const { username, history } = props;
 
   return (
     <div className="home">
@@ -18,7 +18,7 @@ const Home = props => {
               <li><NavLink to="/">HOME</NavLink></li>
               <li><NavLink to="/login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
               <li><NavLink to="/packages">PACKAGES</NavLink></li>
-              <li><NavLink to="/wishlist">{ username !== '' ? 'MY WISHLIST' : '' }</NavLink></li>
+              <li><NavLink to="/wishlist">{username !== '' ? 'MY WISHLIST' : ''}</NavLink></li>
             </ul>
           </nav>
         </div>
@@ -33,7 +33,7 @@ const Home = props => {
           </p>
         </div>
         <div className="actionbtn">
-          <button type="button">FIND NOW</button>
+          <button type="button" onClick={() => history.push('/packages')}>FIND NOW</button>
         </div>
       </main>
     </div>
