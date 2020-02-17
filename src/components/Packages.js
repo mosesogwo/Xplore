@@ -6,7 +6,7 @@ import { SET_PACKAGES, SET_WISHLIST } from '../actions/index';
 
 
 class Packages extends Component {
-  UNSAFE_componentWillMount = () => {
+  componentDidMount = () => {
     this.getPackages();
   }
 
@@ -95,7 +95,7 @@ class Packages extends Component {
 
         <div className="all-packages">
           {packages.map(packageInfo => (
-            <div className="package" onClick={this.expandDetails} onKeyPress={this.expandDetails} key={packageInfo.id}>
+            <div className="package" onClick={this.expandDetails} onKeyPress={this.expandDetails} key={packageInfo.id} role="switch" aria-checked="false" tabIndex="-1">
 
               <div className="package-img">
                 <img src={packageInfo.image} className="package-img" alt="package" />

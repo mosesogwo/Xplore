@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { SET_WISHLIST } from '../actions';
 
 class Wishlist extends Component {
-  UNSAFE_componentWillMount = () => {
+  componentDidMount = () => {
     const { username, history } = this.props;
     if (username === '') {
       history.push('/login');
@@ -54,7 +54,7 @@ class Wishlist extends Component {
 
         <div className="all-packages">
           {wishlist.map(packageInfo => (
-            <div className="package" onClick={this.expandDetails} onKeyPress={this.expandDetails} key={packageInfo.id}>
+            <div className="package" onClick={this.expandDetails} onKeyPress={this.expandDetails} role="switch" aria-checked="false" tabIndex="-1" key={packageInfo.id}>
 
               <div className="package-img">
                 <img src={packageInfo.image} className="package-img" alt="package" />
