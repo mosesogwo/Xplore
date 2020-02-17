@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SET_WISHLIST } from '../actions';
 
@@ -24,21 +25,52 @@ class Wishlist extends Component {
     }
   }
 
+  expandDetails = (event) => {
+    const detailsDiv = event.target.parentNode.parentNode.querySelector('.package-details');
+    detailsDiv.classList.toggle('hidden')
+  }
+
   render = () => {
-    const { wishlist } = this.props;
+    const { wishlist, username } = this.props;
     return (
-      <div>
-        {wishlist.map(packageInfo => (
-          <div className="package">
-            <div className="package-img">
-              <img src={packageInfo.image} width={200} height={200} />
+      <div className="packages">
+          <div className="header-div">
+            <div className="logo-div">
+              <h1>Xplore!</h1>
             </div>
-            <div className="package-title">
-              <p>{packageInfo.destination}</p>
-              <p>{packageInfo.price}</p>
-            </div>
+            <nav>
+              <ul>
+                <li><NavLink to="/">HOME</NavLink></li>
+                <li><NavLink to="/login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
+                <li><NavLink to="/packages">PACKAGES</NavLink></li>
+                <li><NavLink to="/wishlist">{ username !== '' ? 'MY WISHLIST' : '' }</NavLink></li>
+              </ul>
+            </nav>
           </div>
-        ))}
+  
+          <div className="wishes-intro">
+            <h3 className="wishes-title">SEE YOUR WISHLIST</h3>
+          </div>
+
+        <div className="all-packages">
+          {wishlist.map(packageInfo => (
+              <div className="package" onClick={this.expandDetails}>
+  
+                <div className="package-img">
+                  <img src={packageInfo.image} className="package-img" />
+                </div>
+  
+                <div className="package-brief">
+                  <div>{packageInfo.destination}</div>
+                  <div>N{packageInfo.price}</div>
+                </div>
+  
+                <div className="package-details hidden">
+                    <p>{packageInfo.details}</p>
+                </div>
+              </div>
+          ))}
+        </div>
       </div>
     );
   }

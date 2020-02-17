@@ -150,18 +150,21 @@ main button {
   justify-content: baseline;
   padding: 2rem 3rem;
   color: white;
-  /* background-image: linear-gradient(to right top, #fbdac5, #eec8b0, #e1b69c, #d3a588, #c69474, #c6906d, #c58b67, #c58760, #d28f64, #de9668, #eb9e6d, #f8a671); */
-  background: rgb(243, 236, 236);
-  color: black;
+  background: url('./images/plane_bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .packages h1 {
   margin: 0;
 }
 
-.packages .header-div li a {
+.packages li a {
   color: white;
-  color: black;
+  text-decoration: none;
+}
+
+.packages .header-div li a {
   text-decoration: none;
 }
 
@@ -170,6 +173,15 @@ main button {
   width: 60%;
   text-align: center;
   margin: 3rem 0;
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.packages-title {
+  align-self: center;
+  border-bottom: 5px solid black;
 }
 
 .all-packages {
@@ -183,6 +195,10 @@ main button {
   width: 25rem;
   margin-bottom: 2rem;
   cursor: pointer;
+}
+
+.package:hover {
+  width:26rem;
 }
 
 .package-img {
@@ -214,6 +230,10 @@ main button {
 
 .package-details {
   text-align: center;
+  background: white;
+  color: black;
+  padding: 0.7rem;
+  font-weight: bold;
 }
 
 .package-details button {
@@ -228,4 +248,15 @@ main button {
 
 .hidden {
   display: none;
+}
+
+.wishes-intro {
+  align-self: center;
+  width: 30%;
+  text-align: center;
+  margin: 2rem 0;
+  background-color: white;
+  color: black;
+  padding: 0.2rem;
+  border-radius: 2rem;
 }

@@ -85,6 +85,8 @@ class Packages extends Component {
             <p>Vacation packages include flight, hotel accomodation and extras like airport transfers, tours, meals, networking meetings and other activities. You can find rates that save you so much money and booking a package saves you the stress of arranging for these items separately.  </p>
           </div>
 
+          <h3 className="packages-title">SEE AVAILABLE PACKAGES</h3>
+
         <div className="all-packages">
           {packages.map(packageInfo => (
               <div className="package" onClick={this.expandDetails}>
