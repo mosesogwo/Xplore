@@ -182,6 +182,7 @@ main button {
 .package {
   width: 25rem;
   margin-bottom: 2rem;
+  cursor: pointer;
 }
 
 .package-img {
@@ -202,9 +203,17 @@ main button {
   margin-right: 2rem;
 }
 
+.package-brief:hover {
+  color: orangered;
+}
+
 .package-brief p {
   margin: 0;
   padding: 0.5rem 0;
+}
+
+.package-details {
+  text-align: center;
 }
 
 .package-details button {

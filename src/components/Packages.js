@@ -57,6 +57,11 @@ class Packages extends Component {
     }
   }
 
+  expandDetails = (event) => {
+    const detailsDiv = event.target.parentNode.parentNode.querySelector('.package-details');
+    detailsDiv.classList.toggle('hidden')
+  }
+
   render = () => {
     const { packages, username } = this.props;
     return (
@@ -82,7 +87,7 @@ class Packages extends Component {
 
         <div className="all-packages">
           {packages.map(packageInfo => (
-              <div className="package">
+              <div className="package" onClick={this.expandDetails}>
   
                 <div className="package-img">
                   <img src={packageInfo.image} className="package-img" />
