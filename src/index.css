@@ -1,3 +1,7 @@
+h1 {
+  margin: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +15,54 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.home {
+  background: url('./images/plane_bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.home h1 {
+  color:white;
+}
+
+.home-header {
+  display: flex;
+}
+
+.header-div nav {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.header-div ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: stretch;
+}
+
+.header-div li {
+  padding: 1rem;
+}
+
+.header-div {
+  width: 100%;
+  margin: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-header li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* .home nav {
+  display
+} */
