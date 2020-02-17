@@ -13,14 +13,6 @@ class Login extends Component {
     };
   }
 
-  UNSAFE_componentWillMount = () => {
-    const { username, login, history } = this.props;
-    if (username !== '') {
-      login('');
-      history.push('/');
-    }
-  }
-
   handleChange = event => {
     if (event.target.id === 'username') {
       const username = event.target.value;
@@ -44,7 +36,7 @@ class Login extends Component {
   render = () => (
     <div>
       <div className="login-div">
-        <div class="login-form">
+        <div className="login-form">
           <h1>Login</h1>
           <p>Enter your username to login. No need to Sign Up</p>
           <form>
@@ -52,26 +44,22 @@ class Login extends Component {
             <button type="submit" onClick={this.handleLogin}>Login</button>
           </form>
         </div>
-        <div class="nav-link">
-        	<NavLink to="/">Go back home</NavLink>
+        <div className="nav-link">
+          <NavLink to="/">Go back home</NavLink>
         </div>
       </div>
     </div>
   )
 }
 
-const mapStateToProps = state => ({
-  username: state.username,
-});
 
 const mapDispatchToProps = dispatch => ({
   login: username => dispatch(LOGIN(username)),
 });
 
 Login.propTypes = {
-  username: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
-  history: PropTypes.object,
+  history: PropTypes.instanceOf(Object).isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

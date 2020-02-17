@@ -27,7 +27,6 @@ class Packages extends Component {
     fetch('http://localhost:3001/api/v1/packages')
       .then(res => res.json())
       .then(res => {
-        console.log(res)
         setPackages(res.data);
       });
   }
@@ -50,61 +49,71 @@ class Packages extends Component {
   addToWishListBtn = id => {
     const { wishlist, username } = this.props;
     const wishlistIds = wishlist.map(wish => wish.id);
-    if (wishlistIds.includes(id) || username == '') {
-
-    } else {
-      return (<button onClick={() => this.addToWishList(id)}>Add to Wishlist</button>);
+    if (username === '') {
+      return false;
+    } if (wishlistIds.includes(id)) {
+      return (<button type="button" className="added-wish-btn">Added to Wishlist</button>);
     }
+    return (<button type="button" onClick={() => this.addToWishList(id)}>Add to Wishlist</button>);
   }
 
-  expandDetails = (event) => {
+  expandDetails = event => {
     const detailsDiv = event.target.parentNode.parentNode.querySelector('.package-details');
-    detailsDiv.classList.toggle('hidden')
+    detailsDiv.classList.toggle('hidden');
   }
 
   render = () => {
     const { packages, username } = this.props;
     return (
       <div className="packages">
-          <div className="header-div">
-            <div className="logo-div">
-              <h1>Xplore!</h1>
-            </div>
-            <nav>
-              <ul>
-                <li><NavLink to="/">HOME</NavLink></li>
-                <li><NavLink to="/login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
-                <li><NavLink to="/packages">PACKAGES</NavLink></li>
-                <li><NavLink to="/wishlist">{ username !== '' ? 'MY WISHLIST' : '' }</NavLink></li>
-              </ul>
-            </nav>
+        <div className="header-div">
+          <div className="logo-div">
+            <h1>Xplore!</h1>
           </div>
-  
-          <div className="intro">
-            <h2> Why book a vacation package instead of separate flights and hotels? </h2>
-            <p>Vacation packages include flight, hotel accomodation and extras like airport transfers, tours, meals, networking meetings and other activities. You can find rates that save you so much money and booking a package saves you the stress of arranging for these items separately.  </p>
-          </div>
+          <nav>
+            <ul>
+              <li><NavLink to="/">HOME</NavLink></li>
+              <li><NavLink to="/login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
+              <li><NavLink to="/packages">PACKAGES</NavLink></li>
+              <li><NavLink to="/wishlist">{ username !== '' ? 'MY WISHLIST' : '' }</NavLink></li>
+            </ul>
+          </nav>
+        </div>
 
-          <h3 className="packages-title">SEE AVAILABLE PACKAGES</h3>
+        <div className="intro">
+          <h2> Why book a vacation package instead of separate flights and hotels? </h2>
+          <p>
+            Vacation packages include flight, hotel accomodation and extras
+            like airport transfers, tours, meals, networking meetings and
+            other activities. You can find rates that save you so much money
+            and booking a package saves you the stress of arranging for these items separately.
+            {' '}
+          </p>
+        </div>
+
+        <h3 className="packages-title">SEE AVAILABLE PACKAGES</h3>
 
         <div className="all-packages">
           {packages.map(packageInfo => (
-              <div className="package" onClick={this.expandDetails}>
-  
-                <div className="package-img">
-                  <img src={packageInfo.image} className="package-img" />
-                </div>
-  
-                <div className="package-brief">
-                  <div>{packageInfo.destination}</div>
-                  <div>N{packageInfo.price}</div>
-                </div>
-  
-                <div className="package-details hidden">
-                    <p>{packageInfo.details}</p>
-                    { this.addToWishListBtn(packageInfo.id) }
+            <div className="package" onClick={this.expandDetails} onKeyPress={this.expandDetails} key={packageInfo.id}>
+
+              <div className="package-img">
+                <img src={packageInfo.image} className="package-img" alt="package" />
+              </div>
+
+              <div className="package-brief">
+                <div>{packageInfo.destination}</div>
+                <div>
+                  N
+                  {packageInfo.price}
                 </div>
               </div>
+
+              <div className="package-details hidden">
+                <p>{packageInfo.details}</p>
+                { this.addToWishListBtn(packageInfo.id) }
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -125,10 +134,10 @@ const mapDispatchToProps = dispatch => ({
 
 Packages.propTypes = {
   setWishlist: PropTypes.func.isRequired,
-  username: PropTypes.string,
+  username: PropTypes.string.isRequired,
   setPackages: PropTypes.func.isRequired,
-  wishlist: PropTypes.array.isRequired,
-  packages: PropTypes.array.isRequired,
+  wishlist: PropTypes.instanceOf(Array).isRequired,
+  packages: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Packages);

@@ -25,50 +25,53 @@ class Wishlist extends Component {
     }
   }
 
-  expandDetails = (event) => {
-      const detailsDiv = event.target.parentNode.parentNode.querySelector('.package-details');
-      detailsDiv.classList.toggle('hidden')
+  expandDetails = event => {
+    const detailsDiv = event.target.parentNode.parentNode.querySelector('.package-details');
+    detailsDiv.classList.toggle('hidden');
   }
 
   render = () => {
     const { wishlist, username } = this.props;
     return (
       <div className="packages">
-          <div className="header-div">
-            <div className="logo-div">
-              <h1>Xplore!</h1>
-            </div>
-            <nav>
-              <ul>
-                <li><NavLink to="/">HOME</NavLink></li>
-                <li><NavLink to="/login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
-                <li><NavLink to="/packages">PACKAGES</NavLink></li>
-                <li><NavLink to="/wishlist">{ username !== '' ? 'MY WISHLIST' : '' }</NavLink></li>
-              </ul>
-            </nav>
+        <div className="header-div">
+          <div className="logo-div">
+            <h1>Xplore!</h1>
           </div>
-  
-          <div className="wishes-intro">
-            <h3 className="wishes-title">SEE YOUR WISHLIST</h3>
-          </div>
+          <nav>
+            <ul>
+              <li><NavLink to="/">HOME</NavLink></li>
+              <li><NavLink to="/login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
+              <li><NavLink to="/packages">PACKAGES</NavLink></li>
+              <li><NavLink to="/wishlist">{ username !== '' ? 'MY WISHLIST' : '' }</NavLink></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div className="wishes-intro">
+          <h3 className="wishes-title">SEE YOUR WISHLIST</h3>
+        </div>
 
         <div className="all-packages">
           {wishlist.map(packageInfo => (
-              <div className="package" onClick={this.expandDetails}>
-  
-                <div className="package-img">
-                  <img src={packageInfo.image} className="package-img" />
-                </div>
-  
-                <div className="package-brief">
-                  <div>{packageInfo.destination}</div>
-                  <div>N{packageInfo.price}</div>
-                </div>
-  
-                <div className="package-details hidden">
-                    <p>{packageInfo.details}</p>
+            <div className="package" onClick={this.expandDetails} onKeyPress={this.expandDetails} key={packageInfo.id}>
+
+              <div className="package-img">
+                <img src={packageInfo.image} className="package-img" alt="package" />
+              </div>
+
+              <div className="package-brief">
+                <div>{packageInfo.destination}</div>
+                <div>
+                  N
+                  {packageInfo.price}
                 </div>
               </div>
+
+              <div className="package-details hidden">
+                <p>{packageInfo.details}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -87,9 +90,9 @@ const mapDispatchToProps = dispatch => ({
 
 Wishlist.propTypes = {
   username: PropTypes.string.isRequired,
-  history: PropTypes.object.isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
   setWishlist: PropTypes.func.isRequired,
-  wishlist: PropTypes.array.isRequired,
+  wishlist: PropTypes.instanceOf(Array).isRequired,
 
 
 };

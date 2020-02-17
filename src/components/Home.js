@@ -29,7 +29,8 @@ const Home = props => {
         </div>
         <div className="byline">
           <p>
-            Going on a vacation shouldn't be stressful and costly. Find the most exciting and affordable vacation & tour packages.
+            Going on a vacation shouldn&apos;t be stressful and costly.
+            Find the most exciting and affordable vacation & tour packages.
           </p>
         </div>
         <div className="actionbtn">
@@ -46,6 +47,11 @@ const mapStateToProps = state => ({
 
 Home.propTypes = {
   username: PropTypes.string.isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
+};
+
+Home.defaultProps = {
+
 };
 
 export default connect(mapStateToProps)(Home);
