@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { LOGIN } from '../actions/index';
+import { LOGIN, LOGOUT } from '../actions/index';
 
 
 class Login extends Component {
@@ -11,6 +11,13 @@ class Login extends Component {
     this.state = {
       username: '',
     };
+  }
+
+  componentDidMount = () => {
+    const { username, logout } = this.props;
+    if (username !== '') {
+      logout();
+    }
   }
 
   handleChange = event => {
@@ -55,11 +62,14 @@ class Login extends Component {
 
 const mapDispatchToProps = dispatch => ({
   login: username => dispatch(LOGIN(username)),
+  logout: () => dispatch(LOGOUT()),
 });
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(Login);
