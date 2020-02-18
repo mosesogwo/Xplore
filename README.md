@@ -9,6 +9,9 @@
 - React
 - Redux
 
+## Live Demo
+[Click this Link](https://xplore-ng.herokuapp.com/)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -21,7 +24,6 @@ To get a local copy up and running follow these simple example steps.
 - Run `npm install` to install dependencies.
 - Run `npm start` to start development server.
 Localhost should open on your browser if all goes well.
-
 
 ### Usage
 - To view a list of all packages, click the `PACKAGES` link.
