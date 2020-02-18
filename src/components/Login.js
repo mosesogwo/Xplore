@@ -14,9 +14,10 @@ class Login extends Component {
   }
 
   componentDidMount = () => {
-    const { username, logout } = this.props;
+    const { username, logout, history } = this.props;
     if (username !== '') {
       logout();
+      history.push('/');
     }
   }
 
@@ -59,6 +60,9 @@ class Login extends Component {
   )
 }
 
+const mapStateToProps = state => ({
+  username: state.username,
+});
 
 const mapDispatchToProps = dispatch => ({
   login: username => dispatch(LOGIN(username)),
@@ -72,4 +76,4 @@ Login.propTypes = {
   username: PropTypes.string.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
