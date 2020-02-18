@@ -1,8 +1,7 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
@@ -228,7 +227,8 @@ main button {
 
 .package {
   width: 25rem;
-  margin-bottom: 2rem;
+  /* max-height: 17rem; */
+  margin-bottom: 4rem;
   cursor: pointer;
 }
 
@@ -238,7 +238,7 @@ main button {
 
 .package-img {
   width: 100%;
-  height: 100%;
+  height: 15rem;
   border-radius: 1rem 1rem 0 0;
 }
 
