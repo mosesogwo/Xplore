@@ -6,10 +6,6 @@ import { SET_PACKAGES, SET_WISHLIST } from '../actions/index';
 
 
 class Packages extends Component {
-  // componentDidMount = () => {
-  //   this.getPackages();
-  // }
-
   getWishlist = () => {
     const { setWishlist, username } = this.props;
     if (username !== '') {
@@ -45,7 +41,7 @@ class Packages extends Component {
     })
       .then(() => {
         this.getPackages();
-        this.render()
+        this.render();
       });
   }
 
