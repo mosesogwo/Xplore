@@ -2,6 +2,8 @@
 
 > A React & Redux App built to serve data from a Rails backend. Xplore lists travel packages and users can add packages to their wishlist.
 
+![](2020-02-18-16-19-35.png)
+
 ## Built With
 
 - React
@@ -46,6 +48,7 @@ Feel free to check the [issues page](issues/).
 
 ## Acknowledgments
 - Design idea by [Alexey Savitskiy on Behance](https://www.behance.net/alexey_savitskiy)
+- Other design idea from [Momondo](https://global.momondo.com/)
 
 ## 📝 License
 
