@@ -33,9 +33,27 @@ class Packages extends Component {
       });
   }
 
+  // addToWishList = id => {
+  //   const { username } = this.props;
+  //   fetch('https://xplore-api.herokuapp.com/api/v1/wishes/', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       username,
+  //       id,
+  //     }),
+  //   })
+  //     .then(() => {
+  //       this.getPackages();
+  //       this.render();
+  //     });
+  // }
+
   addToWishList = id => {
     const { username } = this.props;
-    fetch('https://xplore-api.herokuapp.com/api/v1/wishes/', {
+    fetch('http://localhost:3001/api/v1/wishes/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +65,6 @@ class Packages extends Component {
     })
       .then(() => {
         this.getPackages();
-        this.render();
       });
   }
 
@@ -63,8 +80,11 @@ class Packages extends Component {
   }
 
   expandDetails = event => {
+    console.log(event.target.tagName)
     const detailsDiv = event.target.parentNode.parentNode.querySelector('.package-details');
-    detailsDiv.classList.toggle('hidden');
+    if (event.target.tagName.toLowerCase() !== 'button') {
+      detailsDiv.classList.toggle('hidden');
+    }
   }
 
   render = () => {
