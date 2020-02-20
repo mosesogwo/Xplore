@@ -6,10 +6,15 @@ import { SET_PACKAGES, SET_WISHLIST } from '../actions/index';
 
 
 class Packages extends Component {
+  componentDidMount = () => {
+    this.getPackages()
+  }
+
   getWishlist = () => {
     const { setWishlist, username } = this.props;
     if (username !== '') {
-      fetch(`https://xplore-api.herokuapp.com/api/v1/wishes?username=${username}`)
+      // fetch(`https://xplore-api.herokuapp.com/api/v1/wishes?username=${username}`)
+      fetch(`http://localhost:3001/api/v1/wishes?username=${username}`)
         .then(res => res.json())
         .then(res => {
           setWishlist(res.data);
@@ -20,7 +25,8 @@ class Packages extends Component {
   getPackages = () => {
     const { setPackages } = this.props;
     this.getWishlist();
-    fetch('https://xplore-api.herokuapp.com/api/v1/packages')
+    // fetch('https://xplore-api.herokuapp.com/api/v1/packages')
+    fetch('http://localhost:3001/api/v1/packages')
       .then(res => res.json())
       .then(res => {
         setPackages(res.data);
@@ -62,7 +68,7 @@ class Packages extends Component {
   }
 
   render = () => {
-    this.getPackages();
+    // this.getPackages();
     const { packages, username } = this.props;
     return (
       <div className="packages">

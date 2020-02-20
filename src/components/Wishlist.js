@@ -17,7 +17,8 @@ class Wishlist extends Component {
   getWishlist = () => {
     const { setWishlist, username } = this.props;
     if (username !== '') {
-      fetch(`https://xplore-api.herokuapp.com/api/v1/wishes?username=${username}`)
+      // fetch(`https://xplore-api.herokuapp.com/api/v1/wishes?username=${username}`)
+      fetch(`http://localhost:3001/api/v1/wishes?username=${username}`)
         .then(res => res.json())
         .then(res => {
           setWishlist(res.data);
