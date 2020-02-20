@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Nav from './Nav';
 
 const Home = props => {
   const { username, history } = props;
@@ -9,19 +10,7 @@ const Home = props => {
   return (
     <div className="home">
       <header className="home-header">
-        <div className="header-div">
-          <div className="logo-div">
-            <h1>Xplore!</h1>
-          </div>
-          <nav>
-            <ul>
-              <li><NavLink to="/">HOME</NavLink></li>
-              <li><NavLink to="/login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
-              <li><NavLink to="/packages">PACKAGES</NavLink></li>
-              <li><NavLink to="/wishlist">{username !== '' ? 'MY WISHLIST' : ''}</NavLink></li>
-            </ul>
-          </nav>
-        </div>
+        <Nav />
       </header>
       <main>
         <div className="headline">

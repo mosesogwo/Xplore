@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SET_WISHLIST } from '../actions';
+import Nav from './Nav';
 
 class Wishlist extends Component {
   componentDidMount = () => {
@@ -35,19 +36,7 @@ class Wishlist extends Component {
     const { wishlist, username } = this.props;
     return (
       <div className="packages">
-        <div className="header-div">
-          <div className="logo-div">
-            <h1>Xplore!</h1>
-          </div>
-          <nav>
-            <ul>
-              <li><NavLink to="/">HOME</NavLink></li>
-              <li><NavLink to="/login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
-              <li><NavLink to="/packages">PACKAGES</NavLink></li>
-              <li><NavLink to="/wishlist">{ username !== '' ? 'MY WISHLIST' : '' }</NavLink></li>
-            </ul>
-          </nav>
-        </div>
+        <Nav />
 
         <div className="wishes-intro">
           <h3 className="wishes-title">SEE YOUR WISHLIST</h3>

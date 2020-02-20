@@ -99,11 +99,13 @@ main button {
 
   .header-div li {
     padding: 0 0.5rem;
+    /* font-size: 0.5rem; */
   }
 
   .header-div ul {
     margin: 0;
   }
+
 
   main {
     margin-bottom: auto;

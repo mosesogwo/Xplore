@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SET_PACKAGES, SET_WISHLIST } from '../actions/index';
+import Nav from './Nav';
 
 
 class Packages extends Component {
@@ -92,20 +93,7 @@ class Packages extends Component {
     const { packages, username } = this.props;
     return (
       <div className="packages">
-        <div className="header-div">
-          <div className="logo-div">
-            <h1>Xplore!</h1>
-          </div>
-          <nav>
-            <ul>
-              <li><NavLink to="/">HOME</NavLink></li>
-              <li><NavLink to="/login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
-              <li><NavLink to="/packages">PACKAGES</NavLink></li>
-              <li><NavLink to="/wishlist">{ username !== '' ? 'MY WISHLIST' : '' }</NavLink></li>
-            </ul>
-          </nav>
-        </div>
-
+        <Nav />
         <div className="intro">
           <h2> Why book a vacation package instead of separate flights and hotels? </h2>
           <p>
