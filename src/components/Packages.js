@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SET_PACKAGES, SET_WISHLIST } from '../actions/index';
 import Header from './Header';
+import Package from './Package';
 
 
 class Packages extends Component {
@@ -69,28 +70,8 @@ class Packages extends Component {
       });
   }
 
-  addToWishListBtn = id => {
-    const { wishlist, username } = this.props;
-    const wishlistIds = wishlist.map(wish => wish.id);
-    if (username === '') {
-      return false;
-    } if (wishlistIds.includes(id)) {
-      return (<button type="button" className="added-wish-btn">Added to Wishlist</button>);
-    }
-    return (<button type="button" onClick={() => this.addToWishList(id)}>Add to Wishlist</button>);
-  }
-
-  expandDetails = event => {
-    console.log(event.target.tagName)
-    const detailsDiv = event.target.parentNode.parentNode.querySelector('.package-details');
-    if (event.target.tagName.toLowerCase() !== 'button') {
-      detailsDiv.classList.toggle('hidden');
-    }
-  }
-
   render = () => {
-    // this.getPackages();
-    const { packages, username } = this.props;
+    const { packages, username, wishlist } = this.props;
     return (
       <div className="packages">
         <Header />
@@ -109,25 +90,7 @@ class Packages extends Component {
 
         <div className="all-packages">
           {packages.map(packageInfo => (
-            <div className="package" onClick={this.expandDetails} onKeyPress={this.expandDetails} key={packageInfo.id} role="switch" aria-checked="false" tabIndex="-1">
-
-              <div className="package-img">
-                <img src={packageInfo.image} className="package-img" alt="package" />
-              </div>
-
-              <div className="package-brief">
-                <div>{packageInfo.destination}</div>
-                <div>
-                  N
-                  {packageInfo.price}
-                </div>
-              </div>
-
-              <div className="package-details hidden">
-                <p>{packageInfo.details}</p>
-                { this.addToWishListBtn(packageInfo.id) }
-              </div>
-            </div>
+            <Package packageInfo={packageInfo} addToWishList={this.addToWishList} wishlist={wishlist} username={username} />
           ))}
         </div>
       </div>

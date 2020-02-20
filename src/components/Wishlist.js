@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SET_WISHLIST } from '../actions';
 import Header from './Header';
+import Package from './Package';
 
 class Wishlist extends Component {
   componentDidMount = () => {
@@ -27,11 +28,6 @@ class Wishlist extends Component {
     }
   }
 
-  expandDetails = event => {
-    const detailsDiv = event.target.parentNode.parentNode.querySelector('.package-details');
-    detailsDiv.classList.toggle('hidden');
-  }
-
   render = () => {
     const { wishlist, username } = this.props;
     return (
@@ -44,24 +40,7 @@ class Wishlist extends Component {
 
         <div className="all-packages">
           {wishlist.map(packageInfo => (
-            <div className="package" onClick={this.expandDetails} onKeyPress={this.expandDetails} role="switch" aria-checked="false" tabIndex="-1" key={packageInfo.id}>
-
-              <div className="package-img">
-                <img src={packageInfo.image} className="package-img" alt="package" />
-              </div>
-
-              <div className="package-brief">
-                <div>{packageInfo.destination}</div>
-                <div>
-                  N
-                  {packageInfo.price}
-                </div>
-              </div>
-
-              <div className="package-details hidden">
-                <p>{packageInfo.details}</p>
-              </div>
-            </div>
+            <Package packageInfo={packageInfo} username={username} wishlist={wishlist} />
           ))}
         </div>
       </div>
