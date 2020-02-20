@@ -83,6 +83,10 @@ main button {
   border-color: orangered;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 1000px) {
   main .headline, main .byline {
     width: 60%;

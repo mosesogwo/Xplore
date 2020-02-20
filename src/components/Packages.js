@@ -86,7 +86,7 @@ class Packages extends Component {
           </p>
         </div>
 
-        <h3 className="packages-title">SEE AVAILABLE PACKAGES</h3>
+        <h3 className="packages-title">AVAILABLE PACKAGES</h3>
 
         <div className="all-packages">
           {packages.map(packageInfo => (

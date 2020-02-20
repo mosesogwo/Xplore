@@ -35,7 +35,7 @@ class Wishlist extends Component {
         <Header />
 
         <div className="wishes-intro">
-          <h3 className="wishes-title">SEE YOUR WISHLIST</h3>
+          <h3 className="wishes-title">YOUR WISHLIST</h3>
         </div>
 
         <div className="all-packages">
