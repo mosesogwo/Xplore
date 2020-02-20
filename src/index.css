@@ -60,6 +60,10 @@ code {
   text-decoration: none;
 }
 
+nav a:hover {
+  color: orangered;
+}
+
 
 main {
   margin-bottom: auto;
