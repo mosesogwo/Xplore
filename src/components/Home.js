@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Nav from './Nav';
+import Header from './Header';
 
 const Home = props => {
   const { username, history } = props;
@@ -10,7 +10,7 @@ const Home = props => {
   return (
     <div className="home">
       <header className="home-header">
-        <Nav />
+        <Header />
       </header>
       <main>
         <div className="headline">

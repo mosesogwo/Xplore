@@ -18,7 +18,7 @@ code {
   background: url('./images/plane_bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: local;
   color:white;
   display: flex;
   flex-direction: column;
@@ -60,6 +60,7 @@ code {
   text-decoration: none;
 }
 
+
 main {
   margin-bottom: auto;
 }
@@ -99,7 +100,6 @@ main button {
 
   .header-div li {
     padding: 0 0.5rem;
-    /* font-size: 0.5rem; */
   }
 
   .header-div ul {
@@ -114,6 +114,19 @@ main button {
 
   main .headline, main .byline {
     width: 95%;
+  }
+}
+
+@media only screen and (max-width: 369px){
+  .header-div ul {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+  }
+  main button {
+    padding: 0;
+    width: 100%;
   }
 }
 

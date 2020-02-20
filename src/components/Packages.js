@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SET_PACKAGES, SET_WISHLIST } from '../actions/index';
-import Nav from './Nav';
+import Header from './Header';
 
 
 class Packages extends Component {
@@ -93,7 +93,7 @@ class Packages extends Component {
     const { packages, username } = this.props;
     return (
       <div className="packages">
-        <Nav />
+        <Header />
         <div className="intro">
           <h2> Why book a vacation package instead of separate flights and hotels? </h2>
           <p>
