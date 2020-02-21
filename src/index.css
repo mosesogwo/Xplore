@@ -55,7 +55,7 @@ code {
   justify-content: space-between;
 }
 
-.home-header li a {
+.home-header li, .header-div a {
   color: white;
   text-decoration: none;
 }
