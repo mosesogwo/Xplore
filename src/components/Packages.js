@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SET_PACKAGES, SET_WISHLIST } from '../actions/index';
 import Header from './Header';
 import Package from './Package';
-
 
 class Packages extends Component {
   componentDidMount = () => {
@@ -15,8 +13,7 @@ class Packages extends Component {
   getWishlist = () => {
     const { setWishlist, username } = this.props;
     if (username !== '') {
-      // fetch(`https://xplore-api.herokuapp.com/api/v1/wishes?username=${username}`)
-      fetch(`http://localhost:3001/api/v1/wishes?username=${username}`)
+      fetch(`https://xplore-api.herokuapp.com/api/v1/wishes?username=${username}`)
         .then(res => res.json())
         .then(res => {
           setWishlist(res.data);
@@ -27,35 +24,17 @@ class Packages extends Component {
   getPackages = () => {
     const { setPackages } = this.props;
     this.getWishlist();
-    // fetch('https://xplore-api.herokuapp.com/api/v1/packages')
-    fetch('http://localhost:3001/api/v1/packages')
+    fetch('https://xplore-api.herokuapp.com/api/v1/packages')
       .then(res => res.json())
       .then(res => {
+        console.log(res.data)
         setPackages(res.data);
       });
   }
-
-  // addToWishList = id => {
-  //   const { username } = this.props;
-  //   fetch('https://xplore-api.herokuapp.com/api/v1/wishes/', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       username,
-  //       id,
-  //     }),
-  //   })
-  //     .then(() => {
-  //       this.getPackages();
-  //       this.render();
-  //     });
-  // }
-
+  
   addToWishList = id => {
     const { username } = this.props;
-    fetch('http://localhost:3001/api/v1/wishes/', {
+    fetch('https://xplore-api.herokuapp.com/api/v1/wishes/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

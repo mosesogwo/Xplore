@@ -60,10 +60,9 @@ code {
   text-decoration: none;
 }
 
-nav a:hover {
+.header-div a:hover {
   color: orangered;
 }
-
 
 main {
   margin-bottom: auto;
@@ -237,11 +236,6 @@ button:hover {
   border-radius: 2rem;
 }
 
-.packages-title {
-  align-self: center;
-  border-bottom: 5px solid black;
-}
-
 .all-packages {
   display: flex;
   flex-wrap: wrap;
@@ -308,11 +302,21 @@ button:hover {
   display: none;
 }
 
+.wishes, .packages {
+  min-height: 100vh;
+}
+
 .wishes-intro {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.wishes-title, .packages-title {
   align-self: center;
   width: 30%;
   text-align: center;
-  margin: 2rem 0;
+  margin: 1rem 0;
   background-color: white;
   color: black;
   padding: 0.2rem;
@@ -341,5 +345,10 @@ button:hover {
 
   .wishes-intro {
     width: 80%;
+    align-self: center;
+  }
+
+  .wishes-title, .packages-title {
+    width: 90%;
   }
 }

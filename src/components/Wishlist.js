@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SET_WISHLIST } from '../actions';
 import Header from './Header';
@@ -19,8 +18,7 @@ class Wishlist extends Component {
   getWishlist = () => {
     const { setWishlist, username } = this.props;
     if (username !== '') {
-      // fetch(`https://xplore-api.herokuapp.com/api/v1/wishes?username=${username}`)
-      fetch(`http://localhost:3001/api/v1/wishes?username=${username}`)
+      fetch(`https://xplore-api.herokuapp.com/api/v1/wishes?username=${username}`)
         .then(res => res.json())
         .then(res => {
           setWishlist(res.data);
@@ -31,7 +29,7 @@ class Wishlist extends Component {
   render = () => {
     const { wishlist, username } = this.props;
     return (
-      <div className="packages">
+      <div className="packages wishes">
         <Header />
 
         <div className="wishes-intro">
