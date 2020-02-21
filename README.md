@@ -51,6 +51,11 @@ Feel free to check the [issues page](issues/).
 ## Acknowledgments
 - Design idea by [Alexey Savitskiy on Behance](https://www.behance.net/alexey_savitskiy)
 - Other design idea from [Momondo](https://global.momondo.com/)
+- Photo by [Charles Postiaux](https://unsplash.com/@charlpost?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/london?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- Photo by [Léonard Cotte](https://unsplash.com/@ettocl?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/paris?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- Photo by [David Rodrigo](https://unsplash.com/@david__r?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/dubai?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- Photo by [Darcey Beau](https://unsplash.com/@darceybeau?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/dubai?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+- Photo by [Yeo Khee](https://unsplash.com/@yokeboy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/paris?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 ## 📝 License
 
