@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 const Header = props => {
@@ -18,11 +19,15 @@ const Header = props => {
         </ul>
       </nav>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => ({
   username: state.username,
-})
+});
+
+Header.propTypes = {
+  username: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps)(Header);

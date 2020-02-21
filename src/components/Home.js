@@ -1,11 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from './Header';
 
 const Home = props => {
-  const { username, history } = props;
+  const { history } = props;
 
   return (
     <div className="home">
@@ -35,7 +34,6 @@ const mapStateToProps = state => ({
 });
 
 Home.propTypes = {
-  username: PropTypes.string.isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
 };
 

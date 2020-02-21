@@ -35,10 +35,15 @@ class Wishlist extends Component {
         <div className="wishes-intro">
           <h3 className="wishes-title">YOUR WISHLIST</h3>
         </div>
-        
+
         <div className="all-packages">
           {wishlist.map(packageInfo => (
-            <Package packageInfo={packageInfo} username={username} wishlist={wishlist} />
+            <Package
+              packageInfo={packageInfo}
+              username={username}
+              wishlist={wishlist}
+              key={packageInfo.id}
+            />
           ))}
         </div>
       </div>

@@ -7,7 +7,7 @@ import Package from './Package';
 
 class Packages extends Component {
   componentDidMount = () => {
-    this.getPackages()
+    this.getPackages();
   }
 
   getWishlist = () => {
@@ -27,11 +27,10 @@ class Packages extends Component {
     fetch('https://xplore-api.herokuapp.com/api/v1/packages')
       .then(res => res.json())
       .then(res => {
-        console.log(res.data)
         setPackages(res.data);
       });
   }
-  
+
   addToWishList = id => {
     const { username } = this.props;
     fetch('https://xplore-api.herokuapp.com/api/v1/wishes/', {
@@ -69,7 +68,13 @@ class Packages extends Component {
 
         <div className="all-packages">
           {packages.map(packageInfo => (
-            <Package packageInfo={packageInfo} addToWishList={this.addToWishList} wishlist={wishlist} username={username} />
+            <Package
+              packageInfo={packageInfo}
+              addToWishList={this.addToWishList}
+              wishlist={wishlist}
+              username={username}
+              key={packageInfo.id}
+            />
           ))}
         </div>
       </div>
