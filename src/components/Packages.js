@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { SET_PACKAGES, SET_WISHLIST } from '../actions/index';
 import Header from './Header';
 import Package from './Package';
 
-class Packages extends Component {
+class Packages extends PureComponent {
   componentDidMount = () => {
     this.getPackages();
   }
