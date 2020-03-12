@@ -5,6 +5,13 @@ import { NavLink } from 'react-router-dom';
 
 const Header = props => {
   const { username } = props;
+  const wishlistNav = () => {
+    if (username) {
+      return (<li><NavLink to="/wishlist">{username !== '' ? 'WISHLIST' : ''}</NavLink></li>);
+    }
+    return false;
+  };
+
   return (
     <div className="header-div">
       <div className="logo-div">
@@ -14,7 +21,7 @@ const Header = props => {
         <ul>
           <li><NavLink to="/">HOME</NavLink></li>
           <li><NavLink to="/packages">PACKAGES</NavLink></li>
-          <li><NavLink to="/wishlist">{username !== '' ? 'WISHLIST' : ''}</NavLink></li>
+          {wishlistNav()}
           <li><NavLink to="/login" className="login">{username !== '' ? 'LOGOUT' : 'LOGIN'}</NavLink></li>
         </ul>
       </nav>
