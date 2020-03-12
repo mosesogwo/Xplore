@@ -247,6 +247,7 @@ button:hover {
   width: 25rem;
   margin-bottom: 4rem;
   cursor: pointer;
+  outline: none;
 }
 
 .package:hover {
