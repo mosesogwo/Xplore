@@ -26,6 +26,22 @@ class Wishlist extends Component {
     }
   }
 
+  removeFromWishList = id => {
+    const { username } = this.props;
+    fetch(`https://xplore-api.herokuapp.com/api/v1/wishes/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+      }),
+    })
+      .then(() => {
+        this.getWishlist();
+      });
+  }
+
   render = () => {
     const { wishlist, username } = this.props;
     return (
@@ -40,6 +56,7 @@ class Wishlist extends Component {
           {wishlist.map(packageInfo => (
             <Package
               packageInfo={packageInfo}
+              removeFromWishList={this.removeFromWishList}
               username={username}
               wishlist={wishlist}
               key={packageInfo.id}

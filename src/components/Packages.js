@@ -48,6 +48,22 @@ class Packages extends PureComponent {
       });
   }
 
+  removeFromWishList = id => {
+    const { username } = this.props;
+    fetch(`https://xplore-api.herokuapp.com/api/v1/wishes/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+      }),
+    })
+      .then(() => {
+        this.getPackages();
+      });
+  }
+
   render = () => {
     const { packages, username, wishlist } = this.props;
     return (
@@ -71,6 +87,7 @@ class Packages extends PureComponent {
             <Package
               packageInfo={packageInfo}
               addToWishList={this.addToWishList}
+              removeFromWishList={this.removeFromWishList}
               wishlist={wishlist}
               username={username}
               key={packageInfo.id}

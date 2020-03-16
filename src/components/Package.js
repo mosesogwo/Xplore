@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Package = props => {
   const {
-    wishlist, username, packageInfo, addToWishList,
+    wishlist, username, packageInfo, addToWishList, removeFromWishList
   } = props;
 
   const expandDetails = event => {
@@ -19,7 +19,10 @@ const Package = props => {
     if (username === '') {
       return false;
     } if (wishlistIds.includes(id)) {
-      return (<button type="button" className="added-wish-btn">Added to Wishlist</button>);
+      return (<button 
+        type="button" 
+        className="added-wish-btn" 
+        onClick={() => removeFromWishList(id)}>Remove from Wishlist</button>);
     }
     return (<button type="button" onClick={() => addToWishList(id)}>Add to Wishlist</button>);
   };
