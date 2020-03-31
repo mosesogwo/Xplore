@@ -33,6 +33,10 @@ Localhost should open on your browser if all goes well.
 - To view your wishlist, click the `WISHLIST` link.
 
 
+## Upcoming features
+- Authentication with password.
+- Admin panel to create, update and delete packages.
+
 ## Author
 
 👤 **Moses Ogwo**
@@ -45,7 +49,7 @@ Localhost should open on your browser if all goes well.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/mosesogwo/Xplore/issues).
 
 
 ## Acknowledgments
